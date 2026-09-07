@@ -4,17 +4,11 @@ A small VR game built with Unity, set in a sci-fi space station with object inte
 
 <p align="center">
   <img src="docs/media/g1_small.gif" alt="Gameplay 1" width="360">
-</p>
-
-<p align="center">
   <img src="docs/media/g2_small.gif" alt="Gameplay 2" width="360">
 </p>
 
 <p align="center">
   <img src="docs/media/g3_small.gif" alt="Gameplay 3" width="360">
-</p>
-
-<p align="center">
   <img src="docs/media/g4_small.gif" alt="Gameplay 4" width="360">
 </p>
 
