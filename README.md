@@ -1,94 +1,82 @@
 # 🚀 Space Scraper
 
-یک بازی VR کوچک در یونیتی: داخل یک ایستگاه فضایی سبک Sci-Fi می‌ایستی، با یک تفنگ لیزری تکه‌های زباله و سنگ‌های فضایی شناور رو می‌شکنی و بعد باید تکه‌های شکسته‌شده رو جمع کنی و داخل سطل زباله بندازی.
+A small VR game built with Unity, set in a sci-fi space station with object interaction and rock breaking using a laser pistol.
 
 <p align="center">
-  <img src="docs/media/banner.gif" alt="Space Scraper gameplay" width="720">
+  <img src="docs/media/g1_small.gif" alt="Gameplay 1" width="720">
 </p>
-
-> عکس‌ها و گیف‌های بالا و پایین این صفحه placeholder هستن. کافیه گیم‌پلی رو ضبط کنی، فایل‌ها رو داخل پوشه‌ی `docs/media/` بذاری و اسم فایل‌ها با اسمی که اینجا لینک شده مطابقت داشته باشه تا خودکار نمایش داده بشن.
-
----
-
-## 🎮 بازی چیه
-
-بازیکن داخل یک محیط فضایی ساخته‌شده با [Sci-Fi Styled Modular Pack](https://assetstore.unity.com) قرار می‌گیره و دو کار انجام می‌ده:
-
-- **شلیک با تفنگ متئور** — تفنگ رو با دست VR می‌گیری، ماشه رو می‌کشی، یک ری‌کست از لوله‌ی تفنگ به بیرون زده می‌شه و هر چیزی که در برچسب `Breakable` باشه رو بعد از چند ثانیه نگه‌داشتن لیزر روی هدف، تیکه‌تیکه می‌کنه.
-- **جمع‌آوری زباله** — تیکه‌های شکسته‌شده رو با دست می‌گیری و داخل سطل زباله می‌ندازی. سطل یک ناحیه‌ی تریگر داره که هر شیء با تگ درست رو که وارد بشه، غیرفعال می‌کنه.
-
-هدف اصلی، تمیز کردن فضای اطراف ایستگاهه.
 
 <p align="center">
-  <img src="docs/media/screenshot-01.jpg" alt="محیط بازی" width="45%">
-  <img src="docs/media/screenshot-02.jpg" alt="شلیک با تفنگ متئور" width="45%">
+  <img src="docs/media/g2_small.gif" alt="Gameplay 2" width="720">
 </p>
 
-## 🛠 تکنولوژی‌ها
+<p align="center">
+  <img src="docs/media/g3_small.gif" alt="Gameplay 3" width="720">
+</p>
 
-| بخش | نسخه |
-|---|---|
-| Unity | 2022.3.62f3 (LTS) |
-| XR Interaction Toolkit | 2.6.4 |
-| OpenXR Plugin | 1.14.3 |
-| XR Management | 4.7.0 |
+<p align="center">
+  <img src="docs/media/g4_small.gif" alt="Gameplay 4" width="720">
+</p>
 
-## 🧩 اسکریپت‌های اصلی
+## 🛠 Technologies
 
-پروژه چند اسکریپت سفارشی داره که منطق اصلی بازی رو می‌سازن:
+| Technology             | Version         |
+| ---------------------- | --------------- |
+| Unity                  | 2022.3.62f3 LTS |
+| XR Interaction Toolkit | 2.6.4           |
+| OpenXR Plugin          | 1.14.3          |
+| XR Management          | 4.7.0           |
 
-- `MeteorPistol.cs` — گوش می‌ده به رویدادهای گرفتن و فعال‌سازی XR (کشیدن ماشه)، پارتیکل شلیک رو پخش می‌کنه و با `Physics.Raycast` هدف روی لایه‌ی مشخص‌شده رو پیدا می‌کنه.
-- `Breakable.cs` — روی هر شیء قابل شکستن قرار می‌گیره؛ وقتی تایمر شکستن پر بشه، قطعات از پیش تعریف‌شده رو فعال می‌کنه، از parent جدا می‌کنه و شیء اصلی رو غیرفعال می‌کنه.
-- `TriggerZone.cs` — یک ناحیه‌ی تریگر عمومی که با تگ مشخص کار می‌کنه و یک `UnityEvent` با شیء وارد‌شده صدا می‌زنه.
-- `TrashCan.cs` — به رویداد `TriggerZone` گوش می‌ده و هر شیء که وارد سطل بشه رو غیرفعال می‌کنه.
-- `DisableGrabbingHandModel.cs` — مدل دست VR رو موقع گرفتن یک شیء مخفی می‌کنه تا مدل خود اسلحه یا شیء دیده بشه، نه دست شفاف روی اون.
+## 🧩 Main Scripts
 
-## ▶️ اجرا کردن پروژه
+* `MeteorPistol.cs` — Laser shooting and raycast logic.
+* `Breakable.cs` — Handles breakable objects.
+* `TriggerZone.cs` — Generic trigger zone and UnityEvent handling.
+* `TrashCan.cs` — Handles object disposal.
+* `DisableGrabbingHandModel.cs` — Hides the VR hand model while grabbing.
 
-1. Unity Hub رو باز کن و نسخه‌ی `2022.3.62f3` رو نصب کن (اگه نداری).
-2. ریپو رو کلون کن:
-   ```bash
-   git clone https://github.com/Mamad-MD/Space-Scraper.git
-   ```
-3. پروژه رو با همون نسخه‌ی یونیتی از داخل Unity Hub باز کن و بذار پکیج‌ها sync بشن.
-4. صحنه‌ی `Assets/Scenes/SampleScene.unity` رو باز کن.
-5. یک هدست XR (سازگار با OpenXR) وصل کن و Play بزن.
+## ▶️ Run
 
-بدون هدست هم می‌شه صحنه رو با XR Device Simulator (که همراه XR Interaction Toolkit میاد) تست کرد.
+1. Install **Unity 2022.3.62f3 LTS**.
+2. Clone the repository:
 
-## 📁 ساختار پروژه
-
+```bash
+git clone https://github.com/Mamad-MD/Space-Scraper.git
 ```
+
+3. Open the project with Unity Hub.
+4. Open:
+
+```text
+Assets/Scenes/SampleScene.unity
+```
+
+5. Connect an OpenXR-compatible VR headset and press **Play**.
+
+The project can also be tested without a headset using **XR Device Simulator**.
+
+## 📁 Project Structure
+
+```text
 Assets/
-├── Scenes/SampleScene.unity        صحنه‌ی اصلی بازی
-├── MeteorPistol.cs                 منطق شلیک و شکستن اشیا
-├── Breakable.cs                    رفتار اشیای قابل شکستن
-├── TriggerZone.cs / TrashCan.cs    منطق سطل زباله
-├── DisableGrabbingHandModel.cs     مدیریت نمایش دست VR
-├── Sci-Fi Styled Modular Pack/     مدل‌ها و متریال‌های محیط ایستگاه فضایی
-├── Lets Make a VR Game/            دست‌های XR، تفنگ، سنگ‌های فضایی
-└── AkdumanDev/                     ست ابزار کار (دکور)
+├── Scenes/SampleScene.unity
+├── MeteorPistol.cs
+├── Breakable.cs
+├── TriggerZone.cs
+├── TrashCan.cs
+├── DisableGrabbingHandModel.cs
+├── Sci-Fi Styled Modular Pack/
+├── Lets Make a VR Game/
+└── AkdumanDev/
 ```
 
-## 🎬 دمو
+## 🙏 Credits
 
-<p align="center">
-  <video src="docs/media/demo.mp4" controls width="720">
-    مرورگرت از تگ ویدیو پشتیبانی نمی‌کنه — می‌تونی مستقیم فایل رو از <code>docs/media/demo.mp4</code> باز کنی.
-  </video>
-</p>
+* Sci-Fi Pistol — Pablo88 ([Sketchfab](https://sketchfab.com/3d-models/sci-fi-pistol-3d7aca39ec9f4aba98642705c0bed2bb))
+* Robot Hand — Inferno Digital / DudleyLong ([RoboHands-UnityXR](https://github.com/InfernoDigital/RoboHands-UnityXR))
+* Milky Way Panorama — ESO / S. Brunier
+* UI 3D Examples — Unity Technologies / XR Interaction Toolkit
 
-اگه ویدیو داخل GitHub خودت رو باز نکرد (بعضی مرورگرها تگ `<video>` رو در README رندر نمی‌کنن)، فایل رو مستقیم آپلود کن داخل یک Issue یا Release و لینکش رو اینجا جایگزین کن — GitHub خودش پلیر می‌سازه.
+## 👤 Developer
 
-## 🙏 اعتبارات
-
-بخشی از asset های محیط و مدل‌ها از منابع زیر استفاده شده:
-
-- Sci-Fi Pistol model — Pablo88 ([Sketchfab](https://sketchfab.com/3d-models/sci-fi-pistol-3d7aca39ec9f4aba98642705c0bed2bb))
-- Robot Hand — Inferno Digital / DudleyLong ([RoboHands-UnityXR](https://github.com/InfernoDigital/RoboHands-UnityXR))
-- Milky Way panorama — ESO/S. Brunier
-- UI 3D Examples — Unity Technologies، XR Interaction Toolkit Examples
-
-## 👤 توسعه‌دهنده
-
-ساخته‌شده توسط [Mamad-MD](https://github.com/Mamad-MD)
+Made by [Mamad-MD](https://github.com/Mamad-MD)
